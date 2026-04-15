@@ -2,11 +2,17 @@
 #include "NetworkManager.h"
 
 // Sobrecargar operador
+// Empaquetar
+sf::Packet& operator<<(sf::Packet& packet, packetType type) {
+	packet << static_cast<int>(type);
+	return packet;
+}
+
+// Desempaquetar
 sf::Packet& operator>>(sf::Packet& packet, packetType& type) {
 	int temp;
 	packet >> temp;
 	type = static_cast<packetType>(temp);
-
 	return packet;
 }
 
@@ -60,7 +66,7 @@ void NetworkManager::ReceiveData()
 			break;
 		case packetType::LOGIN:
 			break;
-		case packetType::MOVIMIENTO:
+		case packetType::REGISTER:
 			break;
 		}
 
@@ -69,5 +75,20 @@ void NetworkManager::ReceiveData()
 	}
 	else {
 		std::cerr << "Error al recibir el mensaje del servidor" << std::endl;
+	}
+}
+
+void NetworkManager::SendRegister(std::string username, std::string password)
+{
+	sf::Packet packet;
+
+	// Empaquetamos en orden: 1.Type, 2.User, 3.Password
+	packet << packetType::REGISTER << username << password;
+
+	if (socket.send(packet) == sf::Socket::Status::Done) {
+		std::cout << "Datos del usuario: " << username << " enviados al servidor" << std::endl;
+	}
+	else {
+		std::cout << "Error al enviar los datos" << std::endl;
 	}
 }

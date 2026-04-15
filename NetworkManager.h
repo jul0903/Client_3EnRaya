@@ -13,6 +13,7 @@ public:
 	bool ConnectToServer();
 	void SendHandshake();
 	void ReceiveData();
+	void SendRegister(std::string username, std::string password);
 
 	friend sf::Packet& operator>>(sf::Packet& packet, packetType& type);
 

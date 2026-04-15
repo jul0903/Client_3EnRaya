@@ -8,5 +8,5 @@ const sf::IpAddress SERVER_IP = sf::IpAddress(127, 0, 0, 1);
 enum class packetType { 
 	HANDSHAKE, 
 	LOGIN, 
-	MOVIMIENTO 
+	REGISTER 
 };
