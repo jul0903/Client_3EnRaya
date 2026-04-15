@@ -1,3 +1,5 @@
-﻿  Source.cpp
-D:\ENTI\5\Redes\Client_3EnRaya\Source.cpp(22,13): warning C4326: el tipo de valor devuelto de 'main' debe ser 'int' en lugar de 'void'
+﻿  NetworkManager.cpp
+  Source.cpp
+D:\ENTI\5\Redes\Client_3EnRaya\Source.cpp(3,13): warning C4326: el tipo de valor devuelto de 'main' debe ser 'int' en lugar de 'void'
+  Generando código...
   Client3EnRaya.vcxproj -> D:\ENTI\5\Redes\Client_3EnRaya\x64\Debug\Client3EnRaya.exe
